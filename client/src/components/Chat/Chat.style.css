@@ -1,0 +1,77 @@
+.chat-container {
+    background-color: white;
+    margin-left: 200px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: flex-start;
+    justify-content: flex-end;
+    align-items: stretch;
+}
+
+.chat-container .chat-actions {
+    display: flex;
+    justify-content: flex-start;
+    background-color: #394B59;
+    padding: 10px 30px 10px 15px;
+    bottom: 0;
+    position: fixed;
+    width: 95%;
+}
+
+.chat-container .message-container {
+    display: flex;
+    margin: 20px 20px 20px 20px;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: flex-start;
+    justify-content: flex-end;
+}
+
+.chat-container .message-container p {
+    justify-content: center;
+    display: flex;
+    background-color: #e6e6e6;
+    margin: 0 5px 0 5px;
+    padding: 10px 15px;
+    color: black;
+    width: 450px;
+    height: auto;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 18px;
+    word-break: break-all;
+}
+
+.chat-container .message-container span {
+    color: gray;
+    margin-left: 10px;
+}
+
+.chat-container .scroll-container {
+    background-color: white;
+    margin-bottom: 50px;
+}
+
+.chat-container .chat-actions form input {
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid blueviolet;
+    height: 30px;
+    background-color: white;
+    font-size: 16px;
+}
+
+.chat-container .message-container div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    cursor: pointer;
+}
+
+.chat-container .message-container div h2 {
+    padding: 20px;
+}

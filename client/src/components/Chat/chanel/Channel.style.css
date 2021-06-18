@@ -1,0 +1,45 @@
+.channel {
+    padding:10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.channel form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.channel form input {
+    margin-bottom: 10px;
+}
+
+.channel div {
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.channel div h4 {
+    margin: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.channel .add-friend {
+    padding-right: 5px;
+}
+
+.channel div:hover {
+    background-color: #808080ad;
+    border-radius: 10px;
+    color: lightgreen;
+}
+
+
+

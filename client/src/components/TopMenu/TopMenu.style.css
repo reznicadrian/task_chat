@@ -1,0 +1,4 @@
+.bp3-navbar.bp3-fixed-top {
+    margin-left: 200px;
+    width: calc(100vw - 200px);
+}
