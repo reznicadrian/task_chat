@@ -25,7 +25,6 @@ function TopMenuComponent({ channels }) {
     <div className={"top-menu"}>
       <Navbar fixedToTop={true}>
         <Navbar.Group align={Alignment.LEFT}>
-          <Button className="bp3-minimal" icon="menu" />
           <Navbar.Divider />
           {isConnected ? (
             <Button

@@ -8,6 +8,7 @@ import {
 import TopMenuComponent from "../TopMenu/TopMenu.component";
 import { MessageContainer } from "./message/Message.container";
 import { FormSendMessageContainer } from "./form/FormSendMessage.container";
+import { SideBarContainer } from "../SideBar/SideBar.container";
 
 function ChatComponent({ channels, chat, notification }) {
   useEffect(() => {
@@ -33,28 +34,33 @@ function ChatComponent({ channels, chat, notification }) {
   }, []);
 
   return (
-    <div className={"chat-container"}>
-      <TopMenuComponent />
-      {notification && (
-        <h3 style={{ color: "black", margin: "20px" }}>{notification.text}</h3>
-      )}
-      <div className={"scroll-container"}>
-        {channels.map((channel) => (
-          <React.Fragment key={channel.channelId}>
-            {channel.isActive ? (
-              <>
-                {channel.messages.map((message, i) => (
-                  <MessageContainer message={message} key={i} />
-                ))}
-              </>
-            ) : null}
-          </React.Fragment>
-        ))}
+    <>
+      <SideBarContainer />
+      <div className={"chat-container"}>
+        <TopMenuComponent />
+        {notification && (
+          <h3 style={{ color: "black", margin: "20px" }}>
+            {notification.text}
+          </h3>
+        )}
+        <div className={"scroll-container"}>
+          {channels.map((channel) => (
+            <React.Fragment key={channel.channelId}>
+              {channel.isActive ? (
+                <>
+                  {channel.messages.map((message, i) => (
+                    <MessageContainer message={message} key={i} />
+                  ))}
+                </>
+              ) : null}
+            </React.Fragment>
+          ))}
+        </div>
+        <div className={"chat-actions"}>
+          <FormSendMessageContainer />
+        </div>
       </div>
-      <div className={"chat-actions"}>
-        <FormSendMessageContainer />
-      </div>
-    </div>
+    </>
   );
 }
 

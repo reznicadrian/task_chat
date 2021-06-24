@@ -5,11 +5,15 @@ import App from "./App";
 import { Provider } from "react-redux";
 import reportWebVitals from "./reportWebVitals";
 import { store } from "./app/root.store";
+import { ConnectedRouter } from "connected-react-router";
+import history from "./app/_utils/browserHistory.js";
 
 ReactDOM.render(
   <>
     <Provider store={store}>
-      <App />
+      <ConnectedRouter history={history}>
+        <App />
+      </ConnectedRouter>
     </Provider>
   </>,
   document.getElementById("root")

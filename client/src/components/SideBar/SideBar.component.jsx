@@ -3,6 +3,7 @@ import "./Contacts.style.css";
 import { Menu } from "@blueprintjs/core";
 import { ContextMenu2, Popover2 } from "@blueprintjs/popover2";
 import { ChannelFormContainer } from "../Chat/chanel/ChannelForm.container";
+import SearchBarComponent from "../Chat/form/SerachBar.component.jsx";
 
 function SideBarComponent({ chat, openChannel }) {
   const channelList = chat.channels.map((channel) => (
@@ -26,7 +27,6 @@ function SideBarComponent({ chat, openChannel }) {
       />
     </ContextMenu2>
   ));
-
   const channelButton = (
     <Popover2
       minimal={true}
@@ -45,7 +45,18 @@ function SideBarComponent({ chat, openChannel }) {
 
   return (
     <div className={"contacts"}>
-      <Menu>{channelList}</Menu>
+      <SearchBarComponent />
+      <Menu.Divider />
+      <Menu>
+        <Menu.Item
+          icon={"user"}
+          className={"bp3-fill"}
+          style={{ cursor: "pointer" }}
+          text={"Add new friend"}
+        />
+      </Menu>
+      {channelList.length > 0 ? <Menu>{channelList}</Menu> : null}
+
       <Menu.Divider />
       <Menu>{channelButton}</Menu>
     </div>
