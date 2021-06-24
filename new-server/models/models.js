@@ -1,4 +1,4 @@
-import sequelize from "../config/db.js";
+import sequelize from "../bin/db.js";
 import DataTypes from "sequelize";
 
 const UserModel = sequelize.define("user", {
@@ -18,13 +18,10 @@ const ChannelModel = sequelize.define("channel", {
   name: { type: DataTypes.STRING },
 });
 
-ChannelModel.hasMany(MessageModel, { as: "messages" });
-MessageModel.belongsTo(ChannelModel, {
-  foreignKey: "channelId",
-  as: "channels",
-});
+ChannelModel.hasMany(MessageModel);
+MessageModel.belongsTo(ChannelModel);
 
-UserModel.hasMany(MessageModel, { as: "messages" });
-MessageModel.belongsTo(UserModel, { foreignKey: "userId", as: "users" });
+UserModel.hasMany(MessageModel);
+MessageModel.belongsTo(UserModel);
 
 export { UserModel, MessageModel, ChannelModel };

@@ -10,7 +10,6 @@ import { channelRouter } from "./routes/channelRoutes.js";
 import { indexRouter } from "./routes/index.js";
 import { messageRouter } from "./routes/messageRoutes.js";
 import { usersRouter } from "./routes/users.js";
-import * as models from "./models/models.js";
 
 const app = express();
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -44,7 +43,7 @@ app.use(function (err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render("error");
+  res.render("error ");
 });
 
 export { app };

@@ -1,4 +1,4 @@
-import sequelize from "../config/db.js";
+import sequelize from "../bin/db.js";
 import DataTypes from "sequelize";
 import MessageModel from "./messageModel.js";
 

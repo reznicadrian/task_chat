@@ -1,4 +1,4 @@
-import sequelize from "../config/db.js";
+import sequelize from "../bin/db.js";
 import DataTypes from "sequelize";
 import ChannelModel from "./channelModel.js";
 import UserModel from "./userModel.js";
@@ -8,7 +8,10 @@ const MessageModel = sequelize.define("message", {
   message: { type: DataTypes.STRING },
 });
 
-export default MessageModel;
-
-MessageModel.belongsTo(UserModel);
+ChannelModel.hasMany(MessageModel);
 MessageModel.belongsTo(ChannelModel);
+
+UserModel.hasMany(MessageModel);
+MessageModel.belongsTo(UserModel);
+
+export default MessageModel;

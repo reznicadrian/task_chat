@@ -7,9 +7,8 @@
 import { app } from "../app.js";
 import Debug from "debug";
 import http from "http";
-import sequelize from "../config/db.js";
+import sequelize from "./db.js";
 import { ws } from "./ws.js";
-import * as models from "../models/models.js";
 
 const debug = Debug("cmt-express:server");
 
