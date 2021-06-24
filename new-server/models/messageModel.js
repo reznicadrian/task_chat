@@ -11,7 +11,4 @@ const MessageModel = sequelize.define("message", {
 ChannelModel.hasMany(MessageModel);
 MessageModel.belongsTo(ChannelModel);
 
-UserModel.hasMany(MessageModel);
-MessageModel.belongsTo(UserModel);
-
 export default MessageModel;
