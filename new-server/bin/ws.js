@@ -8,34 +8,33 @@ const ws = ({ server }) => {
   io.on("connect", (socket) => {
     console.log("New connection");
 
-    socket.on("join", ({ userName, room }, callback) => {
-      const { error, user } = users.addUser({ id: socket.id, userName, room });
+    socket.on("join", ({ me, channelId }, callback) => {
+      const { error, user } = users.addUser({ id: socket.id, me, channelId });
       callback();
       if (error) return callback(error);
 
-      socket.join(user.room);
+      socket.join(user.channelId);
 
-      socket.emit("notification", {
-        user: "admin",
-        text: `${user.userName}, welcome to the chat: ${user.room}`,
-      });
-      socket.broadcast.to(user.room).emit("notification", {
-        user: "admin",
-        text: `${user.userName} has joined`,
-      });
+      // socket.broadcast.to(user.channelId).emit('connect', '123')
 
-      callback();
-    });
+    //   socket.emit("notification", {});
+    //   socket.broadcast.to(user.channelId).emit("notification", {
+    //     user: "admin",
+    //     text: `${user.me} has joined`,
+    //   });
+    //
+        callback();
+     });
 
-    socket.on("sendMessage", (message) => {
+    socket.on("sendMessage", (text) => {
       const user = users.getUser(socket.id);
 
-      console.log(message);
+      console.log(text);
 
-      socket.broadcast.to(user.room).emit("broadcastMessage", message);
+      socket.broadcast.to(user.channelId).emit("broadcastMessage", text);
     });
 
-    socket.on("disconnect", () => {
+     socket.on("disconnect", () => {
       console.log("disconected");
     });
   });

@@ -1,15 +1,13 @@
 const users = [];
 
-const addUser = ({ id, userName, room }) => {
-  userName = userName.trim().toLowerCase();
-  room = room.trim().toLowerCase();
+const addUser = ({ id, me, channelId }) => {
 
   const existingUser = users.find(
-    (user) => user.room === room && user.userName === userName
+    (user) => user.channelId === channelId && user.me === me
   );
   if (existingUser) return { error: "Chat Name is taken" };
 
-  const user = { id, userName, room };
+  const user = { id, me, channelId };
   users.push(user);
   return { user };
 };

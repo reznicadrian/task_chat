@@ -6,10 +6,7 @@ import cors from "cors";
 import logger from "morgan";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
-import { channelRouter } from "./routes/channelRoutes.js";
 import { indexRouter } from "./routes/index.js";
-import { messageRouter } from "./routes/messageRoutes.js";
-import { usersRouter } from "./routes/users.js";
 
 const app = express();
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -26,9 +23,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
-app.use("/api/users", usersRouter);
-app.use("/api/channels", channelRouter);
-app.use("/api/messages", messageRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

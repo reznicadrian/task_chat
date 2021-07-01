@@ -7,7 +7,6 @@
 import { app } from "../app.js";
 import Debug from "debug";
 import http from "http";
-import sequelize from "./db.js";
 import { ws } from "./ws.js";
 
 const debug = Debug("cmt-express:server");
@@ -30,17 +29,10 @@ app.use(ws({ server }));
  * Listen on provided port, on all network interfaces.
  */
 
-const start = async () => {
-  try {
-    await sequelize.authenticate();
-    await sequelize.sync();
-    server.listen(port, () => console.log(`Server is running on port ${port}`));
-  } catch (error) {
-    console.log(error);
-  }
-};
+server.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}`);
+});
 
-start();
 server.on("error", onError);
 server.on("listening", onListening);
 
